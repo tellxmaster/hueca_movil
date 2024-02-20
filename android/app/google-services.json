@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "347942331481",
+    "project_id": "huecainter",
+    "storage_bucket": "huecainter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:347942331481:android:37fb6b368943fa19c4bd48",
+        "android_client_info": {
+          "package_name": "com.huecamovil.hueca_movil"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAelWUYp9NyErhNANtZ7Ue0hbL5H3wMzWI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
