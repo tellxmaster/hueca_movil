@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hueca_movil/global/common/toast.dart';
 import 'package:hueca_movil/user_auth/presentation/widgets/form_container_widget.dart';
+import 'package:hueca_movil/user_auth/presentation/pages/login_page.dart';
 import 'package:hueca_movil/src/controllers/usuario_controller.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -99,13 +100,26 @@ class _SignUpPageState extends State<SignUpPage> {
               const SizedBox(
                 height: 20,
               ),
-              const Row(
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                   Text("¿Ya tienes una cuenta?"),
-                   SizedBox(
+                  const Text("¿Ya tienes una cuenta?"),
+                  const SizedBox(
                     width: 5,
-                  )
+                  ),
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginPage()),
+                            (route) => false);
+                      },
+                      child: const Text(
+                        "Acceder",
+                        style: TextStyle(
+                            color: Colors.blue, fontWeight: FontWeight.bold),
+                      ))
                 ],
               )
             ],
@@ -124,7 +138,7 @@ class _SignUpPageState extends State<SignUpPage> {
     String password = _passwordController.text;
     String username = _usernameController.text;
 
-      await _usuarioController
+    await _usuarioController
         .registrarUsuario(email.trim(), password, username)
         .then((userCredential) {
       setState(() {
@@ -141,5 +155,3 @@ class _SignUpPageState extends State<SignUpPage> {
     });
   }
 }
-
-
