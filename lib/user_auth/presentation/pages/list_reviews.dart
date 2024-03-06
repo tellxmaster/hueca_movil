@@ -1,13 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-// import 'package:hueca_movil/features/user_auth/presentation/widgets/restaurant_create_form.dart';
-// import 'package:hueca_movil/features/user_auth/presentation/widgets/restaurant_review_form.dart';
 import 'package:hueca_movil/global/common/toast.dart';
 import 'package:hueca_movil/src/controllers/resena_controller.dart';
 import 'package:hueca_movil/src/controllers/restaurante_controller.dart';
 import 'package:hueca_movil/src/models/resena.dart';
 import 'package:hueca_movil/src/models/restaurante.dart';
+import 'package:hueca_movil/user_auth/presentation/widgets/restaurant_create_form.dart';
+import 'package:hueca_movil/user_auth/presentation/widgets/restaurant_review_form.dart';
 
 class ListReviews extends StatefulWidget {
   const ListReviews({Key? key}) : super(key: key);
@@ -97,20 +97,20 @@ class ListReviewsState extends State<ListReviews> {
                             IconButton(
                               icon: const Icon(Icons.edit),
                               onPressed: () async {
-                                // bool? result = await Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //     builder: (context) => RestaurantReviewForm(
-                                //       restauranteId: resena
-                                //           .restauranteId, // Ya tienes este dato
-                                //       resenaId: resena
-                                //           .id, // Aquí pasas el ID de la reseña para editarla
-                                //     ),
-                                //   ),
-                                // );
-                                // if (result == true) {
-                                //   _getResenas();
-                                // }
+                                bool? result = await Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => RestaurantReviewForm(
+                                      restauranteId: resena
+                                          .restauranteId, // Ya tienes este dato
+                                      resenaId: resena
+                                          .id, // Aquí pasas el ID de la reseña para editarla
+                                    ),
+                                  ),
+                                );
+                                if (result == true) {
+                                  _getResenas();
+                                }
                               },
                             ),
                           ],
@@ -138,13 +138,13 @@ class ListReviewsState extends State<ListReviews> {
           actions: <Widget>[
             TextButton(
               onPressed: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) =>
-                //         const RestaurantCreateForm(), // Pasa el ID al nuevo widget
-                //   ),
-                // );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        const RestaurantCreateForm(), // Pasa el ID al nuevo widget
+                  ),
+                );
               },
               child: const Text('Nuevo Restaurante'),
             ),
@@ -197,13 +197,13 @@ class ListReviewsState extends State<ListReviews> {
                   // Aquí puedes manejar la selección del restaurante
                   Navigator.of(context).pop(); // Cierra el diálogo
                   if (restauranteId != null) {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) =>
-                    //         RestaurantReviewForm(restauranteId: restauranteId),
-                    //   ),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) =>
+                            RestaurantReviewForm(restauranteId: restauranteId),
+                      ),
+                    );
                   }
                 },
                 hint: const Text('Selecciona un restaurante'),
