@@ -1,16 +1,9 @@
 // Asegúrate de importar los widgets y modelos necesarios en la parte superior
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-
 import 'package:hueca_movil/src/controllers/categoria_controller.dart';
 import 'package:hueca_movil/src/controllers/restaurante_controller.dart';
 import 'package:hueca_movil/src/models/restaurante.dart';
 import 'package:hueca_movil/user_auth/presentation/widgets/restaurant_info.dart';
-=======
-import 'package:hueca_movil/src/controllers/categoria_controller.dart';
-import 'package:hueca_movil/src/controllers/restaurante_controller.dart';
-import 'package:hueca_movil/src/models/restaurante.dart';
->>>>>>> f5cdc12e1667dcecce50927249053c3de1d6cf95
 
 class Explore extends StatefulWidget {
   const Explore({Key? key}) : super(key: key);
@@ -68,7 +61,6 @@ class _ExploreState extends State<Explore> {
                           itemBuilder: (context, index) {
                             Restaurante restaurante = snapshot.data![index];
                             return InkWell(
-<<<<<<< HEAD
                               onTap: () => Navigator.push(
                                 context,
                                 MaterialPageRoute(
@@ -76,9 +68,6 @@ class _ExploreState extends State<Explore> {
                                       RestaurantInfo(id: restaurante.id),
                                 ),
                               ),
-=======
-                              
->>>>>>> f5cdc12e1667dcecce50927249053c3de1d6cf95
                               child: ListTile(
                                 title: Text(restaurante.nombre),
                                 subtitle: FutureBuilder<String>(
@@ -115,7 +104,6 @@ class _ExploreState extends State<Explore> {
                     itemBuilder: (context, index) {
                       Restaurante restaurante = restaurantesFiltrados[index];
                       return InkWell(
-<<<<<<< HEAD
                         onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -123,9 +111,6 @@ class _ExploreState extends State<Explore> {
                                 RestaurantInfo(id: restaurante.id),
                           ),
                         ),
-=======
-                        
->>>>>>> f5cdc12e1667dcecce50927249053c3de1d6cf95
                         child: ListTile(
                           title: Text(restaurante.nombre),
                           subtitle: FutureBuilder<String>(
