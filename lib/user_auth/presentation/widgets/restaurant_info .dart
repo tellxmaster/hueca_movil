@@ -1,38 +1,30 @@
 import 'package:flutter/material.dart';
-// import 'package:hueca_movil/features/user_auth/presentation/widgets/restaurant_review_form.dart';
 import 'package:hueca_movil/src/controllers/categoria_controller.dart';
 import 'package:hueca_movil/src/controllers/resena_controller.dart';
 import 'package:hueca_movil/src/controllers/restaurante_controller.dart';
 import 'package:hueca_movil/src/models/resena.dart';
 import 'package:hueca_movil/src/models/restaurante.dart';
+import 'package:hueca_movil/user_auth/presentation/widgets/restaurant_review_form.dart';
 
-class RestaurantInfo extends StatefulWidget {
+class RestaurantInfo extends StatelessWidget {
   final String id;
+  final RestauranteController _restauranteController = RestauranteController();
+  final CategoriaController _categoriaController = CategoriaController();
+  final ResenaController _resenaController = ResenaController();
 
   RestaurantInfo({
     Key? key,
     required this.id,
   }) : super(key: key);
 
-  @override
-  State<RestaurantInfo> createState() => _RestaurantInfoState();
-}
-
-class _RestaurantInfoState extends State<RestaurantInfo> {
-  final RestauranteController _restauranteController = RestauranteController();
-
-  final CategoriaController _categoriaController = CategoriaController();
-
-  final ResenaController _resenaController = ResenaController();
-
   void _showReviewForm(BuildContext context) {
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (context) => RestaurantReviewForm(
-    //         restauranteId: widget.id), // Pasa el ID al nuevo widget
-    //   ),
-    // );
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => RestaurantReviewForm(
+            restauranteId: id), // Pasa el ID al nuevo widget
+      ),
+    );
   }
 
   @override
@@ -42,7 +34,7 @@ class _RestaurantInfoState extends State<RestaurantInfo> {
         title: const Text('Información del Restaurante'),
       ),
       body: FutureBuilder<Restaurante?>(
-        future: _restauranteController.fetchRestauranteById(widget.id),
+        future: _restauranteController.fetchRestauranteById(id),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
@@ -188,7 +180,7 @@ class _RestaurantInfoState extends State<RestaurantInfo> {
                                     ...resenasSnapshot.data!
                                         .map((resena) => ListTile(
                                               title: Text(resena.titulo,
-                                                  style: TextStyle(
+                                                  style: const TextStyle(
                                                       fontWeight:
                                                           FontWeight.bold)),
                                               subtitle: Text(resena.texto),

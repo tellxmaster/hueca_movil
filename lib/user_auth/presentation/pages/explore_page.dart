@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:hueca_movil/src/controllers/categoria_controller.dart';
 import 'package:hueca_movil/src/controllers/restaurante_controller.dart';
 import 'package:hueca_movil/src/models/restaurante.dart';
-import 'package:hueca_movil/user_auth/presentation/widgets/restaurant_info.dart';
+import 'package:hueca_movil/user_auth/presentation/widgets/restaurant_info%20.dart';
 
 class Explore extends StatefulWidget {
   const Explore({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _ExploreState createState() => _ExploreState();
 }
 
