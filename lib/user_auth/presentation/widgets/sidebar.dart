@@ -5,7 +5,7 @@ import 'package:hueca_movil/src/controllers/usuario_controller.dart';
 import 'package:hueca_movil/user_auth/presentation/pages/login_page.dart';
 
 class Sidebar extends StatefulWidget {
-  const Sidebar({super.key});
+  const Sidebar({Key? key});
 
   @override
   State<Sidebar> createState() => _SidebarState();
@@ -43,12 +43,11 @@ class _SidebarState extends State<Sidebar> {
                 Align(
                   alignment: Alignment.bottomLeft,
                   child: Column(
-                    mainAxisSize: MainAxisSize
-                        .min, // Esto hace que la Columna ocupe solo el espacio necesario.
+                    mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const Text(
-                        'Bienvenido', // Accede directamente al email del usuario
+                        'Bienvenido',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 18.0,
@@ -56,7 +55,7 @@ class _SidebarState extends State<Sidebar> {
                         ),
                       ),
                       Text(
-                        '${FirebaseAuth.instance.currentUser?.email}', // Accede directamente al email del usuario
+                        '${FirebaseAuth.instance.currentUser?.email}',
                         style: const TextStyle(
                           color: Color.fromARGB(255, 0, 217, 255),
                           fontSize: 16.0,
@@ -69,46 +68,22 @@ class _SidebarState extends State<Sidebar> {
               ],
             ),
           ),
-          ListTile(
-            leading: const Icon(Icons.settings),
-            title: const Text('Configuración'),
-            onTap: () {
-              // Update the state of the app
-              // ...
-              // Then close the drawer
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.account_circle),
-            title: const Text('Editar Perfil'),
-            onTap: () {
-              // Update the state of the app
-              // ...
-              // Then close the drawer
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.rate_review),
-            title: const Text('Perfil de reseñas'),
-            onTap: () {
-              // Update the state of the app
-              // ...
-              // Then close the drawer
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.info),
-            title: const Text('Acerca de la App'),
-            onTap: () {
-              // Update the state of the app
-              // ...
-              // Then close the drawer
-              Navigator.pop(context);
-            },
-          ),
+          buildListTile(Icons.settings, 'Configuración', () {
+            Navigator.pop(context);
+            // Navegar a la pantalla de configuración
+          }),
+          buildListTile(Icons.account_circle, 'Editar Perfil', () {
+            Navigator.pop(context);
+            // Navegar a la pantalla de edición de perfil
+          }),
+          buildListTile(Icons.rate_review, 'Perfil de reseñas', () {
+            Navigator.pop(context);
+            // Navegar a la pantalla de reseñas
+          }),
+          buildListTile(Icons.info, 'Acerca de la App', () {
+            Navigator.pop(context);
+            // Navegar a la pantalla de información de la aplicación
+          }),
           ListTile(
             title: GestureDetector(
               onTap: () async {
@@ -117,12 +92,12 @@ class _SidebarState extends State<Sidebar> {
                   Navigator.of(context)
                       .pushReplacementNamed(LoginPage.routeName);
                 }).catchError((error) {
-                  showToast(message: "Ocurrio un error");
+                  showToast(message: "Ocurrió un error al cerrar sesión");
                 });
               },
               child: Container(
                 height: 45,
-                width: double.infinity, // Adjusted to fill the tile width
+                width: double.infinity,
                 decoration: BoxDecoration(
                   color: Colors.orange,
                   borderRadius: BorderRadius.circular(10),
@@ -142,6 +117,14 @@ class _SidebarState extends State<Sidebar> {
           )
         ],
       ),
+    );
+  }
+
+  ListTile buildListTile(IconData icon, String title, Function()? onTap) {
+    return ListTile(
+      leading: Icon(icon),
+      title: Text(title),
+      onTap: onTap != null ? onTap : () {},
     );
   }
 }
